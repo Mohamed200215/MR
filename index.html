@@ -36,16 +36,6 @@
   --color-accent-800: #2c455d;
   --color-accent-900: #1d2d3d;
 
-  --color-accent-2-100: #eef6ff;
-  --color-accent-2-200: #d6ebff;
-  --color-accent-2-300: #bdd8f2;
-  --color-accent-2-400: #9ebbd8;
-  --color-accent-2-500: #7e9cb8;
-  --color-accent-2-600: #627d98;
-  --color-accent-2-700: #486077;
-  --color-accent-2-800: #314457;
-  --color-accent-2-900: #1f2d3a;
-
   --font-heading: "Barlow Condensed", system-ui, sans-serif;
   --font-heading-weight: 600;
   --font-body: "Barlow", system-ui, sans-serif;
@@ -54,24 +44,25 @@
   --space-2: 6.8px;
   --space-3: 10.2px;
   --space-4: 13.6px;
-  --space-6: 20.4px;
-  --space-8: 27.2px;
 
-  --radius-sm: 2px;
   --radius-md: 4px;
-  --radius-lg: 7px;
-
-  --shadow-sm: 0 1px 2px color-mix(in srgb, #2b2b2d 14%, transparent);
-  --shadow-md: 0 3px 10px color-mix(in srgb, #2b2b2d 16%, transparent);
-  --shadow-lg: 0 12px 32px color-mix(in srgb, #2b2b2d 22%, transparent);
 }
 
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
+* , *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
 }
-h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h4 { font-size: 20px; }
+h6 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent-700); text-underline-offset: 3px; }
+a:hover { color: var(--color-accent-800); }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
 
 .blueprint {
   position: relative;
@@ -92,100 +83,39 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-headi
 .blueprint > .corner.bl { bottom: -6px; left: -6px; }
 .blueprint > .corner.br { bottom: -6px; right: -6px; }
 
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
-  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
-}
-h1 { font-size: 42px; }
-h2 { font-size: 32px; }
-h3 { font-size: 25px; }
-h4 { font-size: 20px; }
-h5 { font-size: 16px; }
-h6 { font-size: 13px; }
-h6 { letter-spacing: 0.08em; text-transform: uppercase; }
-p { margin: 0 0 var(--space-3); }
-a { color: var(--color-accent); text-underline-offset: 3px; }
-img { display: block; max-width: 100%; }
-figure { margin: 0; }
-figcaption {
-  font-size: 11px; margin-top: var(--space-1);
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
-}
-.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
-:focus { outline: none; }
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
-
-.hr {
-  height: 1px; border: 0; margin: var(--space-4) 0;
-  background: var(--color-divider);
-}
-
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   cursor: pointer; text-decoration: none;
   font-family: var(--font-heading); font-weight: var(--font-heading-weight);
   font-size: 14px; line-height: 1.2; color: var(--color-text);
-  background: transparent; border: 1px solid transparent;
+  background: transparent; border: 1px solid var(--color-divider);
   padding: var(--space-2) calc(var(--space-3) * 1.2);
-  border-radius: var(--radius-md);
+  border-radius: 0;
 }
-.btn svg { display: block; }
-.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
 .btn-primary:hover { background: var(--color-accent-600); }
-.btn-primary:active { background: var(--color-accent-700); }
-.btn-secondary { border-color: var(--color-divider); }
-.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
-.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
-.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
-.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
 
 .card {
   display: flex; flex-direction: column; gap: var(--space-2);
-  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+  padding: var(--space-3); border-radius: 0; background: transparent;
+  border: 1px solid var(--color-divider);
 }
 .card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
-.card-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 17px; line-height: 1.2; }
-.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-body { margin: 0; font-size: 13px; flex: 1; }
 
 .tag {
   display: inline-flex; align-items: center; font-size: 11px;
-  letter-spacing: 0.02em; padding: 3px 10px;
-  border-radius: calc(var(--radius-md) * 0.75);
+  letter-spacing: 0.02em; padding: 3px 10px; border-radius: 3px;
 }
-.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
 .tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
 .tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
-
-.table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.table th {
-  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text) 60%, transparent);
-  padding: var(--space-2); border-bottom: 1px solid var(--color-divider);
-}
-.table td {
-  padding: var(--space-2);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
-}
-
-.card, .btn, .input, .tag, .seg, .dialog { border-radius: 0; }
-.card, .dialog { background: transparent; border: 1px solid var(--color-divider); }
-.btn { border: 1px solid var(--color-divider); }
-.btn-primary { border-color: var(--color-accent); }
-.btn-ghost { border-color: transparent; }
-
-body { margin: 0; }
-a { color: var(--color-accent-700); }
-a:hover { color: var(--color-accent-800); }
 
 .prototype-figure { background: #fff; overflow: hidden; }
 .prototype-figure img { width: 100%; height: auto; }
 </style>
 </head>
 <body>
-<div style="min-height: 100vh; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body);">
+<div style="min-height: 100vh;">
 
   <!-- ══ Hero ══ -->
   <header style="border-bottom: 1px solid var(--color-divider);">
@@ -194,8 +124,8 @@ a:hover { color: var(--color-accent-800); }
         <span class="tag tag-outline">UX case study</span>
         <span class="tag tag-neutral">Concept project</span>
       </div>
-      <h1 style="font-size: 52px; max-width: 21ch; line-height: 1.08; margin: 0 0 20px; text-wrap: pretty;">Registering a fishing vessel shouldn't require decoding legal text first</h1>
-      <p style="font-size: 19px; max-width: 62ch; margin: 0 0 32px; color: var(--color-neutral-700); text-wrap: pretty;">Redesigning the Merkeregister registration flow — the Norwegian Directorate of Fisheries' form for registering, updating and deregistering commercial fishing vessels.</p>
+      <h1 style="font-size: 52px; max-width: 21ch; line-height: 1.08; margin: 0 0 20px;">Registering a fishing vessel shouldn't require decoding legal text first</h1>
+      <p style="font-size: 19px; max-width: 62ch; margin: 0 0 32px; color: var(--color-neutral-700);">Redesigning the Merkeregister registration flow — the Norwegian Directorate of Fisheries' form for registering, updating and deregistering commercial fishing vessels.</p>
       <a href="https://www.figma.com/design/xq1zsnyFeU1DFEZXrvgDVD" target="_blank" rel="noopener" class="btn btn-primary blueprint" style="padding: 11px 22px; margin-bottom: 40px;"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>View the interactive prototype in Figma →</a>
       <div style="display: flex; gap: 56px; flex-wrap: wrap; font-size: 14px;">
         <div>
@@ -221,7 +151,7 @@ a:hover { color: var(--color-accent-800); }
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
       <div style="font-size: 16px; line-height: 1.65; max-width: 58ch;">
         <p>Merkeregisteret is Fiskeridirektoratet's official registry of commercial fishing vessels. Owners must register a vessel (<em>innmelding</em>), report changes (<em>endring</em>) or deregister it (<em>utmelding</em>) through a generic government form on Altinn.</p>
-        <p>The people filling it in are vessel owners or their representatives. They do this occasionally — when buying a boat, changing ownership, selling — not routinely. Many are not digitally fluent, and none of them have the form's mental model memorised between uses.</p>
+        <p>The people filling it in are vessel owners or their representatives. They do this occasionally, not routinely. Many are not digitally fluent, and none of them have the form's mental model memorised between uses.</p>
         <p style="margin-bottom: 0;">The form itself works. Two things about it don't.</p>
       </div>
       <div style="display: flex; flex-direction: column; gap: 20px;">
@@ -237,7 +167,7 @@ a:hover { color: var(--color-accent-800); }
             <span style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; color: var(--color-accent-700);">F2</span>
             <h4 style="margin: 0;">Corrections silently overwrite the record</h4>
           </div>
-          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-neutral-700);">To correct a submission you duplicate the old one and resubmit. The new submission replaces the old — entirely. Miss a field while re-entering, and correct data is lost without warning. The system offers no comparison, no confirmation of what changed.</p>
+          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-neutral-700);">To correct a submission you duplicate the old one and resubmit. The new submission replaces the old — entirely. Miss a field while re-entering, and correct data is lost without warning.</p>
         </div>
       </div>
     </div>
@@ -251,17 +181,17 @@ a:hover { color: var(--color-accent-800); }
       <div class="card blueprint" style="padding: 24px;"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span class="card-kicker">Principle 1</span>
         <h4 style="margin: 0;">Plain language, first time right</h4>
-        <p class="card-body" style="font-size: 14px; opacity: 1; color: var(--color-neutral-700); line-height: 1.6;">Requirements are stated as instructions, not statute. "You will need an updated shareholder register" — said before the form starts, not cited in §-text halfway through.</p>
+        <p class="card-body" style="color: var(--color-neutral-700); line-height: 1.6;">Requirements are stated as instructions, not statute.</p>
       </div>
       <div class="card blueprint" style="padding: 24px;"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span class="card-kicker">Principle 2</span>
         <h4 style="margin: 0;">Only ask what's relevant</h4>
-        <p class="card-body" style="font-size: 14px; opacity: 1; color: var(--color-neutral-700); line-height: 1.6;">Innmelding, endring and utmelding need different information. A short situation step up front routes each user to only the questions and attachments their case requires.</p>
+        <p class="card-body" style="color: var(--color-neutral-700); line-height: 1.6;">A short situation step up front routes each user to only the questions and attachments their case requires.</p>
       </div>
       <div class="card blueprint" style="padding: 24px;"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <span class="card-kicker">Principle 3</span>
         <h4 style="margin: 0;">Nothing lost by omission</h4>
-        <p class="card-body" style="font-size: 14px; opacity: 1; color: var(--color-neutral-700); line-height: 1.6;">Corrections start from the submitted record, pre-filled. Before submitting, every change is shown old-versus-new. Data can only leave the register deliberately.</p>
+        <p class="card-body" style="color: var(--color-neutral-700); line-height: 1.6;">Corrections start from the submitted record, pre-filled. Every change is shown old-versus-new.</p>
       </div>
     </div>
   </section>
@@ -270,39 +200,35 @@ a:hover { color: var(--color-accent-800); }
   <section style="max-width: 1060px; margin: 0 auto; padding: 96px 32px 0;">
     <h6 style="color: var(--color-accent-700); margin-bottom: 10px;">03 — Key flow 1</h6>
     <h2 style="max-width: 26ch; margin-bottom: 16px;">New vessel registration, as a guided conditional flow</h2>
-    <p style="font-size: 16px; max-width: 62ch; line-height: 1.65; margin-bottom: 48px; color: var(--color-neutral-700);">Instead of one generic form, registration opens with two or three plain questions about the user's situation. The answers determine which documents are required — and the user sees that complete checklist <strong>before</strong> the form begins. Screens below are from the <a href="https://www.figma.com/design/xq1zsnyFeU1DFEZXrvgDVD" target="_blank" rel="noopener">clickable Figma prototype</a>.</p>
+    <p style="font-size: 16px; max-width: 62ch; line-height: 1.65; margin-bottom: 48px; color: var(--color-neutral-700);">Instead of one generic form, registration opens with two or three plain questions about the user's situation. Screens below are from the <a href="https://www.figma.com/design/xq1zsnyFeU1DFEZXrvgDVD" target="_blank" rel="noopener">clickable Figma prototype</a>.</p>
 
-    <!-- Screen 1: situation -->
     <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) 1fr; gap: 40px; align-items: start; margin-bottom: 64px;">
       <figure class="blueprint prototype-figure"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <img src="images/screen-a-situation.png" alt="Situation screen: a short pre-form step asking what the request concerns and how the vessel is owned">
+        <img src="screen-a-situation.png" alt="Situation screen: a short pre-form step asking what the request concerns and how the vessel is owned">
       </figure>
       <div style="padding-top: 8px;">
         <div style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px;">Screen A — Situation</div>
-        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">A short pre-form step in everyday Norwegian. Each option carries a one-line description so users don't need to already know what <em>innmelding</em> means legally. The ownership question is what the current form hides in paragraph text — here it's just a question.</p>
+        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">A short pre-form step in everyday Norwegian. The ownership question is what the current form hides in paragraph text — here it's just a question.</p>
       </div>
     </div>
 
-    <!-- Screen 2: checklist -->
     <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) 1fr; gap: 40px; align-items: start; margin-bottom: 64px;">
       <figure class="blueprint prototype-figure"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <img src="images/screen-b-checklist.png" alt="Checklist screen showing the documents required before starting the form, with a conditional shareholder-register requirement highlighted">
+        <img src="screen-b-checklist.png" alt="Checklist screen showing the documents required before starting the form, with a conditional shareholder-register requirement highlighted">
       </figure>
       <div style="padding-top: 8px;">
         <div style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px;">Screen B — Upfront checklist</div>
-        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">The complete, personalised documentation list — before a single form field. Conditional items like the shareholder register appear only when relevant, highlighted, with the reason stated in one sentence ("because the vessel has multiple shareholders"), replacing the legal paragraph.</p>
-        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">Users who don't have everything can save the checklist and return, instead of abandoning a half-filled form.</p>
+        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">The complete, personalised documentation list — before a single form field.</p>
       </div>
     </div>
 
-    <!-- Screen 3: form step -->
     <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) 1fr; gap: 40px; align-items: start;">
       <figure class="blueprint prototype-figure"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <img src="images/screen-c-form.png" alt="Registration form step for vessel details, with visible step progress and an explicit autosave notice">
+        <img src="screen-c-form.png" alt="Registration form step for vessel details, with visible step progress and an explicit autosave notice">
       </figure>
       <div style="padding-top: 8px;">
         <div style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px;">Screen C — The form itself</div>
-        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">Short steps, visible progress, every field labelled in plain Norwegian with units and examples where they help. Only the questions this situation requires appear — a single-owner utmelding would see roughly half of this flow. Autosave is stated explicitly, because occasional users assume the opposite.</p>
+        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">Short steps, visible progress, every field labelled in plain Norwegian.</p>
       </div>
     </div>
   </section>
@@ -311,27 +237,25 @@ a:hover { color: var(--color-accent-800); }
   <section style="max-width: 1060px; margin: 0 auto; padding: 96px 32px 0;">
     <h6 style="color: var(--color-accent-700); margin-bottom: 10px;">04 — Key flow 2</h6>
     <h2 style="max-width: 26ch; margin-bottom: 16px;">Correcting a registration without risking it</h2>
-    <p style="font-size: 16px; max-width: 62ch; line-height: 1.65; margin-bottom: 48px; color: var(--color-neutral-700);">Today, corrections mean duplicating a past submission and re-entering data — and the resubmission silently replaces the record. The redesign treats a correction as an <strong>edit of the existing record</strong>, with an explicit review of every change before anything is overwritten.</p>
+    <p style="font-size: 16px; max-width: 62ch; line-height: 1.65; margin-bottom: 48px; color: var(--color-neutral-700);">The redesign treats a correction as an <strong>edit of the existing record</strong>, with an explicit review of every change before anything is overwritten.</p>
 
-    <!-- Screen 1: prefilled edit -->
     <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) 1fr; gap: 40px; align-items: start; margin-bottom: 64px;">
       <figure class="blueprint prototype-figure"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <img src="images/screen-d-edit.png" alt="Edit screen pre-filled with the submitted record, with the changed field highlighted and its previous value shown inline">
+        <img src="screen-d-edit.png" alt="Edit screen pre-filled with the submitted record, with the changed field highlighted and its previous value shown inline">
       </figure>
       <div style="padding-top: 8px;">
         <div style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px;">Screen D — Pre-filled, not blank</div>
-        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">Editing opens the submitted record, not an empty duplicate. Every field shows the register's current value, so there is nothing to re-enter and nothing to forget. Fields the user touches are marked immediately, with the previous value shown inline — the first line of defence against accidental changes.</p>
+        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">Editing opens the submitted record, not an empty duplicate.</p>
       </div>
     </div>
 
-    <!-- Screen 2: diff -->
     <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) 1fr; gap: 40px; align-items: start;">
       <figure class="blueprint prototype-figure"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <img src="images/screen-e-diff.png" alt="Change summary screen listing each changed field as old value versus new value, with unchanged fields stated as kept">
+        <img src="screen-e-diff.png" alt="Change summary screen listing each changed field as old value versus new value, with unchanged fields stated as kept">
       </figure>
       <div style="padding-top: 8px;">
         <div style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 8px;">Screen E — Change summary</div>
-        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">Before final submission, a diff: old value against new value for every changed field, and an explicit statement that everything else is kept. Nothing can be lost by omission — an unchanged field simply stays. The submit button confirms <em>changes</em>, not a wholesale replacement.</p>
+        <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-700);">Before final submission, a diff: old value against new value for every changed field.</p>
       </div>
     </div>
   </section>
@@ -344,19 +268,19 @@ a:hover { color: var(--color-accent-800); }
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px 40px;">
         <div>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; margin-bottom: 4px;">Contrast beyond the minimum</div>
-          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">Body text and form labels hold at least 7:1 against the background (WCAG 1.4.6 AAA), not just the 4.5:1 AA floor — this form is often filled in on deck, outdoors, on ageing screens.</p>
+          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">Body text and form labels hold at least 7:1 against the background (WCAG 1.4.6 AAA).</p>
         </div>
         <div>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; margin-bottom: 4px;">Plain-language errors, next to the field</div>
-          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">Errors say what to do ("Skriv lengden i meter, f.eks. 14,95"), appear beside the field they concern, and are announced to screen readers (WCAG 3.3.1, 3.3.3).</p>
+          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">Errors say what to do, appear beside the field they concern (WCAG 3.3.1, 3.3.3).</p>
         </div>
         <div>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; margin-bottom: 4px;">Real labels, always visible</div>
-          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">Every input has a programmatically associated, permanently visible label — no placeholder-as-label (WCAG 1.3.1, 3.3.2). Units and examples sit in the label, not inside the field.</p>
+          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">Every input has a programmatically associated, permanently visible label (WCAG 1.3.1, 3.3.2).</p>
         </div>
         <div>
           <div style="font-family: var(--font-heading); font-weight: 600; font-size: 16px; margin-bottom: 4px;">Logical focus order</div>
-          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">Focus follows reading order through each step; conditional fields are inserted directly after the question that revealed them, and a visible focus ring is never removed (WCAG 2.4.3, 2.4.7).</p>
+          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: var(--color-accent-200);">A visible focus ring is never removed (WCAG 2.4.3, 2.4.7).</p>
         </div>
       </div>
     </div>
@@ -366,7 +290,7 @@ a:hover { color: var(--color-accent-800); }
   <section style="max-width: 1060px; margin: 0 auto; padding: 96px 32px 112px;">
     <h6 style="color: var(--color-accent-700); margin-bottom: 10px;">06 — Reflection</h6>
     <h2 style="margin-bottom: 20px;">What I'd validate next</h2>
-    <p style="font-size: 17px; line-height: 1.7; max-width: 64ch; color: var(--color-neutral-800);">This is a concept project, so its biggest assumptions are untested. With real vessel owners I'd want to verify that the situation questions use words they'd use themselves — "eierskifte" may be obvious to a caseworker and opaque to a first-time owner — and that the upfront checklist reduces abandoned submissions rather than just moving the drop-off earlier. With Fiskeridirektoratet's caseworkers I'd want to check whether the change-summary format matches how they actually review corrections, and whether pre-filling from the register is feasible given how Altinn submissions map to their case system today.</p>
+    <p style="font-size: 17px; line-height: 1.7; max-width: 64ch; color: var(--color-neutral-800);">This is a concept project, so its biggest assumptions are untested. With real vessel owners I'd want to verify the situation questions use words they'd use themselves, and that the upfront checklist reduces abandoned submissions. With Fiskeridirektoratet's caseworkers I'd want to check whether the change-summary format matches how they actually review corrections.</p>
   </section>
 
   <footer style="border-top: 1px solid var(--color-divider);">
